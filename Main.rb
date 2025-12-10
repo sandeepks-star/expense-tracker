@@ -1,34 +1,15 @@
 require_relative 'Login.rb'
 require_relative 'Registration.rb'
 
+
 class Main
   def run
+    login = Login.new
     register = Registration.new
-    #expense = ExpenseTracker.new
     loop do
       puts "=============================================="
       puts "-----Welcome to Personal Expense Tracker -----"
       puts "=============================================="
-      # puts "\n\n Choose from below options "
-      # puts "1. Add Expense"
-      # puts "2. List Expense"
-      # puts "3. Show Summary"
-      # puts "4. Exit"
-
-      # choice = gets.chomp.to_i
-
-      # case choice
-      # when 1
-      #   expense.add_expense
-      # when 2
-      #   expense.list_expense
-      # when 3
-      #   expense.show_summary
-      # when 4
-      #   puts "Exited Successfully"
-      #   return
-      # end
-
       puts "\n-----Choose from below options-----"
       puts "\n 1. Login "
       puts "\n 2. Register"
@@ -38,11 +19,11 @@ class Main
 
       case choice
       when 1
-        Login
+        login.user_login
       when 2
         register.registration_details
       when 3
-        puts "Exited Successfully"
+        puts "Thank you, Come again"
         break
       end
 

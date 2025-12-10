@@ -1,11 +1,8 @@
 require_relative 'Expense.rb'
+# require_relative 'Login.rb'
 require 'date'
 
 class ExpenseTracker
-
-  def initialize
-    @expenses = []
-  end
 
   def add_amount
     puts "\n\n----- Add Amount of Expense -----"
@@ -68,8 +65,8 @@ class ExpenseTracker
   end
 
   def add_expense
-    puts "\n\n----- Add your Expense -----"
 
+    puts "\n\n----- Add your Expense -----"
 
     choose_date
 
@@ -80,8 +77,12 @@ class ExpenseTracker
     puts "\n\n----- Add Notes (optional) -----"
     notes = gets.chomp
 
-    expense = Expense.new(@final_date,@category,@amount,notes)
-    @expenses.push(expense)
+    expense = Expense.new(final_date,category,amount,notes)
+    expense_array = [expense.date, expense.category, expense.amount, expense.notes]
+
+    CSV.open("#{user_email}.csv", "a") do |csv|
+      csv << expense_array
+    end
 
     puts "\n ---- Expense added Successfully ----\n"
   end
