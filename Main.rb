@@ -1,7 +1,6 @@
 require_relative 'Login.rb'
 require_relative 'Registration.rb'
 
-
 class Main
   def run
     login = Login.new
@@ -14,9 +13,7 @@ class Main
       puts "\n 1. Login "
       puts "\n 2. Register"
       puts "\n 3. Exit\n\n"
-
       choice = gets.chomp.to_i
-
       case choice
       when 1
         login.user_login
@@ -26,7 +23,6 @@ class Main
         puts "Thank you, Come again"
         break
       end
-
     end
   end
 end
