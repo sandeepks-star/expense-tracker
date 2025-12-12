@@ -1,6 +1,3 @@
-require 'csv'
-require_relative 'User.rb'
-
 module Validators
   def name_validator
     puts "\n\nEnter you name::"
@@ -37,7 +34,9 @@ module Validators
     @password = gets.chomp
     loop do
       return if @password.length >= 6 && @password.match?(/^(?=.*\d)(?=.*[a-zA-Z])(?=.*[~!@#$%^&*()_+{}\[\]:;<>,.?\/\\-])[a-zA-Z0-9~!@#$%^&*()_+{}\[\]:;<>,.?\/\\-]+$/)
+
       puts "Password must be atleast of 6 characters including one special character and Alphanumeric Characters"
+
       @password = gets.chomp
     end
   end
@@ -70,45 +69,5 @@ module Validators
       puts "Invalid Occupation name"
       @occupation = gets.chomp
     end
-  end
-end
-
-
-class Registration
-  include Validators
-  USER_HEADERS = ["name", "last_name", "email", "password", "age", "city", "occupation"]
-  EXPENSE_HEADERS = ["date", "category", "amount", "notes"]
-
-  def registration_details
-    puts "\n\n==>> Enter your details to Register <<=="
-    name_validator
-    lastname_validator
-    email_validator
-    password_validator
-    age_validator
-    city_validator
-    occupation_validator
-    u_details = User.new(@name, @last_name, @email, @password, @age, @city, @occupation)
-    u_details_array = [u_details.name, u_details.last_name, u_details.email, u_details.password, u_details.age, u_details.city, u_details.occupation]
-    unless File.exist?("User_details.csv")
-      CSV.open("User_details.csv", "w") do |csv|
-        csv << USER_HEADERS
-      end
-    end
-
-    CSV.foreach("User_details.csv", "r", headers:true) do |row|
-      return puts "\nEmail already registered, Please Log In\n" if row.fields.include?(@email)
-    end
-
-    unless File.exist?("#{@email}.csv")
-      CSV.open("#{@email}.csv", "w") do |csv|
-        csv << EXPENSE_HEADERS
-      end
-    end
-
-    CSV.open("User_details.csv", "a") do |csv|
-      csv << u_details_array
-    end
-    puts "\n\n---- User Registered Successfully ----"
   end
 end

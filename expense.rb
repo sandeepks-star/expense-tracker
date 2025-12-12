@@ -9,11 +9,7 @@ class Expense
     @notes = notes
   end
 
-  def display_category_wise
-    puts "Date: [#{@date}], Category: #{@category}"
-  end
-
-  def display
-    puts "Date: [#{@date}], Category: #{@category}, Amount: #{@amount}, Notes: #{@notes}"
+  def expense_array
+    e_array = [date, category, amount, notes]
   end
 end

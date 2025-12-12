@@ -1,5 +1,5 @@
-require_relative 'Login.rb'
-require_relative 'Registration.rb'
+require_relative 'login.rb'
+require_relative 'registration.rb'
 
 class Main
   def run
