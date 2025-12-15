@@ -32,7 +32,8 @@ class Registration
     end
 
     CSV.foreach("user_details.csv", "r", headers:true) do |row|
-      return puts "\nEmail already registered, Please Log In\n" if row.fields.include?(@email)
+      user_id = row.to_h
+      return puts "\nEmail already registered, Please use different E-mail Id\n\n" if @email == user_id['email']
     end
 
     unless File.exist?("#{@email}.csv")
