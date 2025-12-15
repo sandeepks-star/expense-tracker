@@ -31,12 +31,6 @@ class ExpenseTracker
     end
   end
 
-  private def call_expensevalidator
-    date_validator
-    category_validator
-    amount_validator
-  end
-
   def add_expense
     puts "\n\n----- Add your Expense -----"
     call_expensevalidator
@@ -53,16 +47,27 @@ class ExpenseTracker
     puts "\n ---- Expense added Successfully ----\n"
   end
 
-  private def list_expense
+  private
+
+  def call_expensevalidator
+    date_validator
+    category_validator
+    amount_validator
+  end
+
+
+
+  def list_expense
     count = 0
     CSV.foreach("#{$current_user}.csv", headers:true) do |row|
         puts " #{count+1}. -- #{row['date']} || #{row['category']} --\n"
         count = count + 1
     end
     return puts "No expense to show." if count == 0
+
   end
 
-  private def show_summary
+  def show_summary
     puts "\nYour Expenses"
     list_expense
     puts "\n\nChoose the category to show expense category wise."

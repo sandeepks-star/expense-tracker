@@ -29,8 +29,8 @@ module ExpenseValidator
     user_input = gets.chomp
     @category = user_input.capitalize
 
-    for a in 1..3 do
-      break if CATEGORIES.include?(@category)
+    loop do
+      break if CATEGORIES.split(', ').include?("#{@category}")
       puts "Invalid selection choose from category #{CATEGORIES}"
       user_input = gets.chomp
       @category = user_input.capitalize!

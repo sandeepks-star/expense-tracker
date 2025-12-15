@@ -1,6 +1,6 @@
 require 'csv'
 require "debug"
-require_relative 'expensetracker.rb'
+require_relative 'expense_tracker.rb'
 
 class Login
 
