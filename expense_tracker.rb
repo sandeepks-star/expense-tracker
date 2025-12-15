@@ -4,8 +4,6 @@ require_relative 'expense_validator.rb'
 require 'csv'
 require 'date'
 
-
-
 class ExpenseTracker
   include ExpenseValidator
   def run_tracker
@@ -54,8 +52,6 @@ class ExpenseTracker
     category_validator
     amount_validator
   end
-
-
 
   def list_expense
     count = 0

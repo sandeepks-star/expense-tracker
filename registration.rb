@@ -17,7 +17,6 @@ class Registration
     occupation_validator
   end
 
-
   def registration_details
     puts "\n\n==>> Enter your details to Register <<=="
     call_validators
